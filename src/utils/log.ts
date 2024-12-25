@@ -20,8 +20,4 @@ const log = {
 //   console.log(chalk.rgb(40, 156, 193).visible(data));
 // };
 
-// // 下面就是一些相关的提示
-// ..........
-//  goodPrinter();
-// .......
 export default log;
