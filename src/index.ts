@@ -9,7 +9,7 @@ program
   .command('create')
   .description('创建一个新项目')
   .argument('[name]', '项目名称')
-  .action(async (name) => {
+  .action(async (name?: string) => {
     await create(name);
   });
 
