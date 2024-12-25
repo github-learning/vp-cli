@@ -26,7 +26,7 @@ export const templates: Map<string, TemplateInfo> = new Map([
     'backend-template',
     {
       name: 'admin-server-template',
-      downloadUrl: 'git@gitee.com:sohucw/admin-pro.git',
+      downloadUrl: 'git@github.com:github-learning/vue3-admin.git',
       description: 'Vue3技术栈后台开发模板',
       branch: 'main',
     },

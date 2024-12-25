@@ -1,13 +1,26 @@
 {
   "name": "we-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Vite",
+    "VUE3",
+    "Typescript",
+    "Element-Plus"
+  ],
+  "author": "we",
+  "bin": {
+    "we": "bin/index.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README"
+  ],
   "license": "ISC",
   "description": "",
   "devDependencies": {
