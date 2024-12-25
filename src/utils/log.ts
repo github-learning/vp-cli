@@ -16,7 +16,7 @@ const log = {
 };
 
 // const goodPrinter = async () => {
-//   const data = await figlet('欢迎使用 we-cli 脚手架');
+//   const data = await figlet('欢迎使用 wp-cli 脚手架');
 //   console.log(chalk.rgb(40, 156, 193).visible(data));
 // };
 

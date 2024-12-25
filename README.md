@@ -13,18 +13,18 @@
 ## 🏗 安装
 
 ```bash
-npm install we-cli -g
+npm install vp-cli -g
 ```
 
 ## 📦 使用
 
 ```bash
-we-cli create <project-name>
+vp-cli create <project-name>
 ```
 
 ## 🚩 查看脚手架版本
 
 ```bash
-we-cli -v
+vp-cli -v
 
 ```
