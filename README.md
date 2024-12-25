@@ -1,4 +1,4 @@
-# vp-cli
+# vp-cli-tools
 
 ![Npm 版本](https://img.shields.io/badge/we-cli_v0.0.1-green)
 
@@ -13,18 +13,18 @@
 ## 🏗 安装
 
 ```bash
-npm install vp-cli -g
+npm install vp-cli-tools -g
 ```
 
 ## 📦 使用
 
 ```bash
-vp-cli create <project-name>
+vp-cli-tools create <project-name>
 ```
 
 ## 🚩 查看脚手架版本
 
 ```bash
-vp-cli -v
+vp-cli-tools -v
 
 ```

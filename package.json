@@ -1,5 +1,5 @@
 {
-  "name": "vp-cli",
+  "name": "vp-cli-tools",
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
