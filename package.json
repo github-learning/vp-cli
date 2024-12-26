@@ -1,6 +1,6 @@
 {
   "name": "vp-cli-tools",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -29,6 +29,7 @@
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-terser": "^0.4.3",
+    "@types/figlet": "^1.7.0",
     "@types/fs-extra": "^11.0.2",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.4",

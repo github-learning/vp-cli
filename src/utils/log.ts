@@ -1,6 +1,6 @@
-import logSymbols from 'log-symbols';
+import logSymbols from "log-symbols";
 
-const log = {
+export const log = {
   error: (msg: string) => {
     console.log(logSymbols.error, msg);
   },
@@ -14,10 +14,3 @@ const log = {
     console.log(logSymbols.info, msg);
   },
 };
-
-// const goodPrinter = async () => {
-//   const data = await figlet('欢迎使用 wp-cli 脚手架');
-//   console.log(chalk.rgb(40, 156, 193).visible(data));
-// };
-
-export default log;

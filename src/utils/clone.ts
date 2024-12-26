@@ -1,7 +1,9 @@
 import simpleGit, { SimpleGit, SimpleGitOptions } from 'simple-git';
-import log from './log';
+import { log } from './log';
 import createLogger from 'progress-estimator';
 import chalk from 'chalk';
+// import figlet from 'figlet';
+const figlet = require('figlet');
 
 const logger = createLogger({
   // 初始化进度条
@@ -12,6 +14,14 @@ const logger = createLogger({
     ), // 设置加载动画
   },
 });
+const goodPrinter = async () => {
+  const data = await figlet.textSync('欢迎使用 vp-cli-tools 脚手架', {
+    font: 'Standard',
+  });
+  console.log(chalk.rgb(40, 156, 193).visible(data));
+};
+
+// 下面就是一些相关的提示
 
 const gitOptions: Partial<SimpleGitOptions> = {
   baseDir: process.cwd(), // 根目录
@@ -34,7 +44,7 @@ export const clone = async (
     // 下面就是一些相关的提示
     console.log();
     console.log(chalk.blueBright(`==================================`));
-    console.log(chalk.blueBright(`=== 欢迎使用 wp-cli 脚手架 ===`));
+    console.log(chalk.blueBright(`=== 欢迎使用 vp-cli-tools 脚手架 ===`));
     console.log(chalk.blueBright(`==================================`));
     console.log();
 
@@ -43,6 +53,7 @@ export const clone = async (
     log.info(`cd ${chalk.blueBright(prjName)}`);
     log.info(`${chalk.yellow('pnpm')} install`);
     log.info(`${chalk.yellow('pnpm')} run dev`);
+    goodPrinter();
   } catch (err: any) {
     log.error('下载失败');
     log.error(String(err));
