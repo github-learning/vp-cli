@@ -8,7 +8,7 @@
 
 ## 模版
 
-- ✅ [Vite4-Vue3-Typescript-template][git@github.com:github-learning/vue3-admin.git]
+- ✅ [Vite4-Vue3-Typescript-template][https://kkgithub.com/github-learning/vue3-admin.git]
 
 ## 🏗 安装
 
