@@ -1,6 +1,6 @@
 {
   "name": "vp-cli-tools",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,7 @@
   ],
   "author": "we",
   "bin": {
-    "we": "bin/index.js"
+    "vp-cli-tools": "bin/index.js"
   },
   "files": [
     "dist",
