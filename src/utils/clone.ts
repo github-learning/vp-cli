@@ -8,7 +8,7 @@ import fs from 'fs-extra';
 import { exec, spawn } from 'child_process';
 import ora from 'ora';
 
-const figlet = require('figlet');
+const figlet = require('figlet'); // 字体艺术字
 
 const spinnerTip = ora({
   text: 'vp-cli-tools 正在更新',
