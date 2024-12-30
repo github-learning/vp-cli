@@ -7,7 +7,7 @@ import fs from 'fs-extra';
 import { spawn } from 'child_process';
 import ora from 'ora';
 
-import figlet from 'figlet'; // 字体艺术字
+const figlet = require('figlet'); // 字体艺术字
 
 const spinnerTip = ora({
   text: 'vp-cli-tools 正在更新',
@@ -28,8 +28,8 @@ const logger = createLogger({
     ), // 设置加载动画
   },
 });
-const goodPrinter = async () => {
-  const data = await figlet.textSync('欢迎使用 vp-cli-tools 脚手架', {
+const goodPrinter = () => {
+  const data = figlet.textSync('欢迎使用 vp-cli-tools 脚手架', {
     font: 'Standard',
   });
   console.log(chalk.rgb(40, 156, 193).visible(data));
