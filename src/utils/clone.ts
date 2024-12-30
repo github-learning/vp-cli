@@ -4,11 +4,10 @@ import createLogger from 'progress-estimator';
 import chalk from 'chalk';
 import path from 'path';
 import fs from 'fs-extra';
-// import  from "child_process";
-import { exec, spawn } from 'child_process';
+import { spawn } from 'child_process';
 import ora from 'ora';
 
-const figlet = require('figlet'); // 字体艺术字
+import figlet from 'figlet'; // 字体艺术字
 
 const spinnerTip = ora({
   text: 'vp-cli-tools 正在更新',
