@@ -1,4 +1,4 @@
-import logSymbols from "log-symbols";
+import logSymbols from 'log-symbols';
 
 export const log = {
   error: (msg: string) => {

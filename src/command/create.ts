@@ -20,22 +20,19 @@ export const templates: Map<string, TemplateInfo> = new Map([
   [
     'Vite4-Vue3-Typescript-template',
     {
-      name: 'admin-template',
-      downloadUrl: 'git@gitee.com:Big_Cat-AK-47/edit-table.git',
-      // downloadUrl: "git@github.com:github-learning/vue3-admin.git",
-      description: 'Vue3技术栈开发模板',
-      // branch: "main",
-      branch: 'master',
+      name: 'Vue-admin-template',
+      downloadUrl: 'https://kkgithub.com/github-learning/vue3-admin', // 为提高github 访问速度，使用 kk 来加速
+      description: 'Vue3技术栈前端开发模板',
+      branch: 'main',
     },
   ],
   [
-    'backend-template',
+    'React-template',
     {
-      name: 'admin-server-template',
-      downloadUrl: 'git@gitee.com:Big_Cat-AK-47/edit-table.git',
-      description: 'Vue3技术栈后台开发模板',
-      // branch: "main",
-      branch: 'master',
+      name: 'React-admin-template',
+      downloadUrl: 'https://kkgithub.com/github-learning/vue3-admin', // 目前还没有开发React 技术栈模版，暂时用Vue 替代
+      description: 'React技术栈前端开发模板',
+      branch: 'main',
     },
   ],
 ]);
@@ -56,11 +53,7 @@ export const getNpmLatestVersion = async (npmName: string) => {
   console.log('name', npmName);
   try {
     const { data } = (await getNpmInfo(npmName)) as AxiosResponse;
-    console.log(
-      '%c [  ]-57',
-      'font-size:13px; background:pink; color:#bf2c9f;',
-      data
-    );
+
     return data['dist-tags'].latest;
   } catch (error) {
     console.log('error', error);
@@ -103,19 +96,12 @@ export default async function create(prjName?: string) {
   // 如果文件已存在需要让用户判断是否覆盖原文件
   const filePath = path.resolve(process.cwd(), prjName);
 
-  console.log(
-    '%c [  ]-90',
-    'font-size:13px; background:pink; color:#bf2c9f;',
-    filePath,
-    fs.existsSync(filePath)
-  );
   if (fs.existsSync(filePath)) {
     const run = await isOverWrite(prjName);
     if (run) {
       await fs.remove(filePath);
     } else return;
   }
-  console.log('111111');
 
   const templateList = [...templates.entries()].map(
     (item: [string, TemplateInfo]) => {
@@ -127,14 +113,7 @@ export default async function create(prjName?: string) {
       };
     }
   );
-  console.log('222');
 
-  console.log(
-    '%c [  ]-131',
-    'font-size:13px; background:pink; color:#bf2c9f;',
-    name,
-    version
-  );
   await checkVersion(name, version); // 检测版本更新
 
   // 选择模板
@@ -146,11 +125,6 @@ export default async function create(prjName?: string) {
   // 下载模板
   const gitRepoInfo = templates.get(templateName);
 
-  console.log(
-    '%c [  ]-73',
-    'font-size:13px; background:pink; color:#bf2c9f;',
-    gitRepoInfo
-  );
   if (gitRepoInfo) {
     await clone(gitRepoInfo.downloadUrl, prjName, [
       '-b',

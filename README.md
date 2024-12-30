@@ -1,6 +1,6 @@
 # vp-cli-tools
 
-![Npm 版本](https://img.shields.io/badge/we-cli_v0.0.1-green)
+![Npm 版本](https://img.shields.io/badge/we-cli_v0.3.7-green)
 
 ## 📖 简介
 

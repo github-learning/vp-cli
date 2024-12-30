@@ -12,7 +12,7 @@
     "Typescript",
     "Element-Plus"
   ],
-  "author": "we",
+  "author": "birds-zhao",
   "bin": {
     "vp-cli-tools": "bin/index.js"
   },

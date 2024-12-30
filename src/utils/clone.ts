@@ -9,16 +9,6 @@ import ora from 'ora';
 
 const figlet = require('figlet'); // 字体艺术字
 
-const spinnerTip = ora({
-  text: 'vp-cli-tools 正在更新',
-  spinner: {
-    interval: 300,
-    frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'].map((item) =>
-      chalk.blue(item)
-    ), // 设置加载动画
-  },
-});
-
 const logger = createLogger({
   // 初始化进度条
   spinner: {
@@ -45,32 +35,8 @@ const gitOptions: Partial<SimpleGitOptions> = {
 
 // 安装项目依赖
 const installDependencies = (prjName: string): Promise<void> => {
-  // return new Promise((resolve, reject) => {
   const projectDir = path.join(process.cwd(), prjName);
-  //   // ora("安装依赖中...").start(); // 启动加载动画
-  //   spinnerTip.start('安装依赖中...');
 
-  //   // 检查项目目录是否存在
-  //   if (!fs.existsSync(projectDir)) {
-  //     reject(new Error('项目目录不存在'));
-  //     return;
-  //   }
-
-  //   // 执行 pnpm install 安装依赖
-  //   exec(
-  //     'npm install --verbose --force',
-  //     { cwd: projectDir },
-  //     (err, stdout, stderr) => {
-  //       if (err) {
-  //         reject(`依赖安装失败: ${stderr || err.message}`);
-  //       } else {
-  //         console.log(chalk.green('依赖安装成功'));
-
-  //         resolve();
-  //       }
-  //     }
-  //   );
-  // });
   return new Promise((resolve, reject) => {
     const npmInstall = spawn('npm', ['install', '--verbose', '--force'], {
       cwd: projectDir,
@@ -140,28 +106,6 @@ const runProject = (prjName: string): Promise<void> => {
       reject(new Error(`项目启动失败: ${err.message}`));
     });
   });
-  // return new Promise((resolve, reject) => {
-  //   const projectDir = path.join(process.cwd(), prjName);
-  //   spinnerTip.start('项目启动中...');
-
-  //   // 检查项目目录是否存在
-  //   if (!fs.existsSync(projectDir)) {
-  //     reject(new Error('项目目录不存在'));
-  //     return;
-  //   }
-
-  //   // 执行 pnpm run dev 启动项目
-  //   exec('pnpm run serve', { cwd: projectDir }, (err, stdout, stderr) => {
-  //     spinnerTip.stop(); // 停止 spinner 提示
-  //     console.log(chalk.blue('日志' + stdout));
-  //     if (err) {
-  //       reject(`项目启动失败: ${stderr || err.message}`);
-  //     } else {
-  //       console.log(chalk.green('项目已成功启动！'));
-  //       resolve();
-  //     }
-  //   });
-  // });
 };
 
 export const clone = async (
@@ -189,8 +133,9 @@ export const clone = async (
     log.info(`${chalk.yellow('pnpm')} install`);
     log.info(`${chalk.yellow('pnpm')} run dev`);
     goodPrinter();
-
+    // 安装依赖
     await installDependencies(prjName);
+    // 运行项目
     await runProject(prjName);
   } catch (err: any) {
     log.error('下载失败');
