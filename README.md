@@ -35,7 +35,8 @@
 
 ## 模版
 
-- ✅ [Vite5-Vue3.5-Typescript-template][https://kkgithub.com/github-learning/vue3-admin.git]
+- ✅ [Vite5-Vue3.5-Typescript-template][https://github.com/github-learning/vue3-admin.git]
+- ✅ [cli 模版][https://github.com/github-learning/vp-cli-tools]
 
 ## 🏗 安装
 

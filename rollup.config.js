@@ -26,7 +26,7 @@ export default defineConfig([
       typescript(),
       json(),
       commonjs(),
-      // terser(),
+      terser(),
     ],
   },
 ]);
