@@ -1,11 +1,13 @@
-import { select, input } from '@inquirer/prompts'; //  交互效果
-import fs from 'fs-extra';
-import path from 'path';
-import { clone } from '../utils/clone';
-import { log } from '../utils/log';
+const fs = require('fs-extra');
+const prompts = require('@inquirer/prompts');
+const { select, input } = prompts; // 交互效果
+
+const path = require('path');
+const { clone } = require('../utils/clone');
+const { log } = require('../utils/log');
 import axios, { AxiosResponse } from 'axios';
-import lodash from 'lodash';
-import chalk from 'chalk'; // 美化工具
+const lodash = require('lodash');
+const chalk = require('chalk'); // 美化工具
 import { name, version } from '../../package.json';
 
 export interface TemplateInfo {
@@ -99,7 +101,7 @@ export default async function create(prjName?: string) {
   const filePath = path.resolve(process.cwd(), prjName);
 
   if (fs.existsSync(filePath)) {
-    const run = await isOverWrite(prjName);
+    const run = await isOverWrite(String(prjName));
     if (run) {
       await fs.remove(filePath);
     } else return;

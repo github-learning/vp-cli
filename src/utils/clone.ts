@@ -1,11 +1,19 @@
 import simpleGit, { SimpleGit, SimpleGitOptions } from 'simple-git';
-import { log } from './log';
-import createLogger from 'progress-estimator';
-import chalk from 'chalk';
-import path from 'path';
-import fs from 'fs-extra';
-import { spawn } from 'child_process';
-import ora from 'ora';
+const { log } = require('./log');
+const createLogger = require('progress-estimator');
+const chalk = require('chalk');
+const path = require('path');
+const fs = require('fs-extra');
+const { spawn } = require('child_process');
+const ora = require('ora');
+
+// import { log } from './log';
+// import createLogger from 'progress-estimator';
+// import chalk from 'chalk';
+// import path from 'path';
+// import fs from 'fs-extra';
+// import { spawn } from 'child_process';
+// import ora from 'ora';
 
 const figlet = require('figlet'); // 字体艺术字
 
@@ -44,7 +52,7 @@ const installDependencies = (prjName: string): Promise<void> => {
       shell: true, // 使用 shell，确保命令在 Windows 和其他平台上都能运行
     });
 
-    npmInstall.on('close', (code) => {
+    npmInstall.on('close', (code: Number) => {
       if (code === 0) {
         console.log(chalk.green('依赖安装成功'));
         resolve();
@@ -53,7 +61,7 @@ const installDependencies = (prjName: string): Promise<void> => {
       }
     });
 
-    npmInstall.on('error', (err) => {
+    npmInstall.on('error', (err: any) => {
       reject(`依赖安装时发生错误: ${err.message}`);
     });
   });
@@ -79,7 +87,7 @@ const runProject = (prjName: string): Promise<void> => {
       shell: true, // 确保在跨平台运行时正常
     });
     let isResolved = false; // 标记是否已经完成
-    serveProcess.stdout.on('data', (data) => {
+    serveProcess.stdout.on('data', (data: any) => {
       const output = data.toString();
       console.log(chalk.green(output)); // 实时打印日志
 
@@ -91,18 +99,18 @@ const runProject = (prjName: string): Promise<void> => {
       }
     });
 
-    serveProcess.stderr.on('data', (data) => {
+    serveProcess.stderr.on('data', (data: any) => {
       console.error(chalk.red(data.toString()));
     });
 
-    serveProcess.on('close', (code) => {
+    serveProcess.on('close', (code: Number) => {
       if (code !== 0) {
         spinnerTip.fail('项目启动失败');
         reject(new Error(`项目启动失败，退出代码: ${code}`));
       }
     });
 
-    serveProcess.on('error', (err) => {
+    serveProcess.on('error', (err: any) => {
       spinnerTip.fail('项目启动失败');
       reject(new Error(`项目启动失败: ${err.message}`));
     });

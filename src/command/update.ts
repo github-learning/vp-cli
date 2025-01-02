@@ -1,7 +1,8 @@
-import process from 'child_process';
-import chalk from 'chalk';
-import ora from 'ora'; // 命令行加载loading
-import os from 'os'; // 导入 os 模块
+const process = require('child_process');
+const chalk = require('chalk');
+const ora = require('ora'); // 命令行加载loading
+const os = require('os'); // 导入 os 模块
+
 const spinner = ora({
   text: 'vp-cli-tools 正在更新',
   spinner: {
@@ -17,7 +18,7 @@ export default function update() {
 
   process.exec(
     'npm install vp-cli-tools@latest -g',
-    (error, stdout, stderr) => {
+    (error: any, stdout: any, stderr: any) => {
       spinner.stop();
 
       // 判断操作系统类型
