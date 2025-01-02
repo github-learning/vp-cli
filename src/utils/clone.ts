@@ -73,18 +73,19 @@ const runProject = (prjName: string): Promise<void> => {
     }
 
     // 使用 spawn 执行 pnpm run serve
-    const serveProcess = spawn('pnpm', ['run', 'serve'], {
+    const serveProcess = spawn('pnpm', ['dev'], {
       cwd: projectDir,
       stdio: 'pipe', // 子进程的输出流式处理
       shell: true, // 确保在跨平台运行时正常
     });
-
+    let isResolved = false; // 标记是否已经完成
     serveProcess.stdout.on('data', (data) => {
       const output = data.toString();
       console.log(chalk.green(output)); // 实时打印日志
 
       // 检测到启动完成的标志
-      if (output.includes('App running at')) {
+      if (!isResolved && output.includes('App running at')) {
+        isResolved = true; // 确保只调用一次
         spinnerTip.succeed('项目启动成功！');
         resolve(); // 完成 Promise
       }

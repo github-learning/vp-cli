@@ -18,10 +18,10 @@ export interface TemplateInfo {
 // 这里保存了我写好的预设模板
 export const templates: Map<string, TemplateInfo> = new Map([
   [
-    'Vite4-Vue3-Typescript-template',
+    'Vite5-Vue3.5-Typescript-template',
     {
       name: 'Vue-admin-template',
-      downloadUrl: 'https://kkgithub.com/github-learning/vue3-admin', // 为提高github 访问速度，使用 kk 来加速
+      downloadUrl: 'https://github.com/github-learning/vue3-admin', // 为提高github 访问速度，使用 kk 来加速
       description: 'Vue3技术栈前端开发模板',
       branch: 'main',
     },
@@ -30,7 +30,7 @@ export const templates: Map<string, TemplateInfo> = new Map([
     'React-template',
     {
       name: 'React-admin-template',
-      downloadUrl: 'https://kkgithub.com/github-learning/vue3-admin', // 目前还没有开发React 技术栈模版，暂时用Vue 替代
+      downloadUrl: 'https://github.com/github-learning/vue3-admin', // 目前还没有开发React 技术栈模版，暂时用Vue 替代
       description: 'React技术栈前端开发模板',
       branch: 'main',
     },
@@ -53,15 +53,17 @@ export const getNpmLatestVersion = async (npmName: string) => {
   console.log('name', npmName);
   try {
     const { data } = (await getNpmInfo(npmName)) as AxiosResponse;
-
-    return data['dist-tags'].latest;
+    console.log('data', data);
+    return data.version;
+    // return data['dist-tags'].latest;
   } catch (error) {
     console.log('error', error);
   }
 };
 // npm 包提供了根据包名称查询包信息的接口// 我们在这里直接使用 axios 请求调用即可
 export const getNpmInfo = async (npmName: string) => {
-  const npmUrl = 'https://registry.npmjs.org/' + npmName;
+  const npmUrl = `https://registry.npmjs.org/${npmName}/latest`;
+  // const npmUrl = `https://registry.npmjs.org/${npmName}`;
   console.log('npmUrl', npmUrl);
   let res = {};
   try {
