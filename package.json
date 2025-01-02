@@ -1,6 +1,6 @@
 {
   "name": "vp-cli-tools",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
